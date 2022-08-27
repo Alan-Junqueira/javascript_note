@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
+import './App.scss';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomeScreen from './screens/home';
+import RegisterScreen from './screens/auth/register';
+import LoginScreen from './screens/auth/login';
+import NotesIndexScreen from './screens/notes/index';
+import UserEditScreen from './screens/users/edit';
+import PrivateRouter from './components/auth/private_router';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <Fragment>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<HomeScreen />} />
+        <Route exact path="/register" element={<RegisterScreen />} />
+        <Route exact path="/login" element={<LoginScreen />} />
+
+        <Route exact path="/notes" element={<PrivateRouter />}>
+          <Route exact path="/notes" element={<NotesIndexScreen />} />
+        </Route>
+
+        <Route exact path="/users/edit" element={<PrivateRouter />}>
+          <Route exact path="/users/edit" element={<UserEditScreen />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </Fragment>
+);
 
 export default App;

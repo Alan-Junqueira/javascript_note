@@ -1,0 +1,48 @@
+@import './custom_colors';
+
+.notes{
+  height: calc(100% - 70px);
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+}
+
+.bm-menu{
+  background: white;
+  padding-top: 10px;
+}
+
+.list-item.is-active{
+  position: relative;
+  background-color: $custom-grey-light;
+}
+
+.list-item h1 {
+  margin-top: 15px;
+  padding-top: 3px;
+}
+.list-item .columns .column.is-2 {
+  z-index: 1;
+}
+
+.list-item.is-active::before{
+  position: absolute;
+  content: '';
+  background: rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 100%;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  border-radius: 5px;
+}
+
+
+.notes-editor{
+  padding: 0;
+  height: calc(100% - 43px);
+  .quill{
+    height: 100%;
+  }
+}
